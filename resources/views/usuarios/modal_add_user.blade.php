@@ -26,8 +26,9 @@
           <div class="form-group">
             <label for="message-text" class="col-form-label">Tipo:</label>
                 <select class="form-control" name ="tipo" id="tipo_usuario">
-                  <option value="1">Administrador</option>
-                  <option value="2">Usuario</option>
+                 <option value="1">Administrador</option>
+                  <option value="2">Cajero</option>
+                  <option value="3">Mesero</option>
               </select>
           </div>
         </form>
@@ -70,7 +71,8 @@
             <label for="message-text" class="col-form-label">Tipo:</label>
                 <select class="form-control" name ="tipo_edit" id="tipo_edit">
                   <option value="1">Administrador</option>
-                  <option value="2">Usuario</option>
+                  <option value="2">Cajero</option>
+                  <option value="3">Mesero</option>
               </select>
           </div>
         </form>

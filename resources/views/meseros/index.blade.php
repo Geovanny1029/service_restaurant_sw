@@ -93,83 +93,74 @@
                         <div class="col-lg-12">
                             <h1 class="page-header">ELIGE UNA OPCION</h1>
                         </div>
-                        <!-- /.col-lg-12 -->
+
                     </div>
                     <!-- /.row -->
                     <div class="row">
+                        @foreach($usuarios_mesero as $mesero)
                         <div class="col-lg-3 col-md-6">
-                            
                             <div class="panel panel-primary">
-
                                 <div class="panel-heading">
-                                    <a href="/copy_paste_software/public/ventas" style="color: #f5f5f5;">
+                                    <a href="#" onclick="llm({{$mesero->nombre_completo}})" style="color: #f5f5f5;">
                                     <div class="row">
                                         <div class="col-xs-3">
                                             <i class="fa fa-shopping-cart fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">VENTAS</div>
+                                            <div class="huge">{{$mesero->nombre_completo}}</div>
                                             <div>Registros de Ventas!!!</div>
                                         </div>
                                     </div>
                                     </a>
                                 </div>
+                            </div>
+                        </div>
+                        @endforeach
+<!-- Nueva Aduana -->
+<div class="modal_mesero" id="modalMeseroAd" role="document" tabindex="-1" aria-labelledby="exampleModalLabel" hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        
+          <small id="titulo" class="text-muted">Agregar Alimento</small>
+        
+      </div>
+      <div class="divider"></div> 
+      <div class="modal-body">
+        <form id="FormAgregarUsuario">
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Nombre Completo:</label>
+            <input value="" type="text" class="form-control" placeholder="Nombre completo" name="nombre_completo" id="nombre_completo" required>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Login:</label>
+            <input type="text" class="form-control" placeholder="usuario" name="login" id="login" required>
+          </div>
+        
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Tipo:</label>
+                <select class="form-control" name ="tipo" id="tipo_usuario">
+                 <option value="1">Administrador</option>
+                  <option value="2">Cajero</option>
+                  <option value="3">Mesero</option>
+              </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="divider"></div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="GuardarUsuario">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-green">
-                                <div class="panel-heading">
-                                    <a href="/service_restaurant_sw/public/usuarios" style="color: #f5f5f5;">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-users fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">USUARIOS</div>
-                                            <div>Edicion de Empleados!!!</div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                     <a href="/service_restaurant_sw/public/almacen" style="color: #f5f5f5;">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-archive fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">ALMACEN</div>
-                                            <div>Registro de Productos!!!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                    </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-red">
-                                <div class="panel-heading">
-                                    <a href="/service_restaurant_sw/public/cuentas" style="color: #f5f5f5;">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-line-chart fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">CUENTAS</div>
-                                            <div>Analisis de Ventas!!!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                   
-                                </a>
-                            </div>
-                        </div>
+
+
+
                     </div>
            
 
@@ -188,7 +179,10 @@ document.addEventListener('DOMContentLoaded', function () {
     toastr.success('¡Bienvenido/a!');
 });
 
-   $("#modalUserAd").modal("show");
+$( "#addmesero" ).on( "click", function() {
+   $("#modalMeseroAd").modal("show"); 
+} );
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
 

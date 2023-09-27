@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>BIENVENIDO COPY AND PASTE</title>
+    <title>EL PESCADO PATRULLERO</title>
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/login/bootstrap.min.css') }}"/>
     <!-- MetisMenu CSS -->
@@ -60,18 +60,18 @@
 
         <ul class="nav navbar-nav navbar-left navbar-top-links">
             
-            <li><a href="/copy_paste_software/public/home"><i class="fa fa-home fa-fw"></i> Home</a></li>
+            <li><a href="/service_restaurant_sw/public/home"><i class="fa fa-home fa-fw"></i> Home</a></li>
         </ul>
         <ul class="nav navbar-right navbar-top-links">
 
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> {{Auth::user()->nombre_completo}} <b class="caret"></b>
+                    <i class="fa fa-user fa-fw"></i>  <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li class="divider"></li>
                     <li>
-                        <a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        
                     </li>
                 </ul>
             </li>
@@ -108,7 +108,7 @@
                                         <th>ESTATUS</th>
                                         <th>ACCIONES</th>
                                     </tr>
-                                    </thead>
+                                </thead>
                                 </table>
                             </div>
                             @include('usuarios.modal_add_user')
@@ -143,7 +143,7 @@ $( document ).ready(function() {
     Tableuser = $("#usuarios-table").DataTable({
       rowId: "id",
       ajax: {
-        url: '/copy_paste_software/public/CargarUsuarios',
+        url: '/service_restaurant_sw/public/CargarUsuarios',
         type: 'GET'
       },
 
@@ -157,9 +157,13 @@ $( document ).ready(function() {
             searchable : false,
             render:function(d){
                 if(d.tipo == 1){
-                    return "ADMIN";
+                    return "ADMIN";}
+                    
+                else if(d.tipo == 2){
+                    return "CAJERO"
+                
                 }else{
-                    return "EMPLEADO"
+                    return "MESERO"
                 }
             },
             
@@ -224,7 +228,7 @@ Swal.fire({
   /* Read more about isConfirmed, isDenied below */
   if (result.isConfirmed) {
     $.ajax({
-        url     : `/copy_paste_software/public/desactivar `,
+        url     : `/service_restaurant_sw/public/desactivar `,
         type    : 'POST',
         data    : {'id':id},
         success : function(response){
@@ -259,7 +263,7 @@ Swal.fire({
   /* Read more about isConfirmed, isDenied below */
   if (result.isConfirmed) {
     $.ajax({
-        url     : `/copy_paste_software/public/activar `,
+        url     : `/service_restaurant_sw/public/activar `,
         type    : 'POST',
         data    : {'id':id},
         success : function(response){
@@ -288,7 +292,7 @@ function editausuario(d){
     $("#modalUserEdit").modal("show");
     $("#EditarUsuario").val(d.id);
    $.ajax({
-        url     : `/copy_paste_software/public/editar `,
+        url     : `/service_restaurant_sw/public/editar `,
         type    : 'POST',
         data    : {'id':id},
         success : function(d){
